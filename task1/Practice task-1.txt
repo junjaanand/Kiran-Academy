@@ -1,0 +1,133 @@
+/*PART-A ::-- DATABASE AND TABLE CREATION */
+-- TASK(1 TO 5)
+create database if not Exists company_db;
+use company_db;
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(100),
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    city VARCHAR(50),
+    joining_date DATE,
+    status VARCHAR(20)
+);
+show tables;
+desc employees;
+select * from employees;
+
+
+/*PART-B ::--  INSERT Operations*/
+-- TASK((6 TO 11)
+insert into employees (employee_id, employee_name, department, salary, city, joining_date, status)
+values  (101, "Rahul_Patil", "Development", 45000, "Pune", "2026-01-10", "Active"),
+(102, 'Priya Sharma', 'Testing', 38000, 'Mumbai', '2026-02-15', 'Active'),
+(103, 'Amit Joshi', 'Development', 52000, 'Pune', '2025-12-05', 'Active'),
+(104, 'Sneha Kulkarni', 'HR', 35000, 'Nashik',' 2026-03-20', 'Active'),
+(105, 'Rohan Deshmukh', 'Support', 30000, 'Mumbai', '2026-04-01', 'Inactive'),
+(106, 'Anjali More',' Testing', 42000, 'Pune', '2026-05-12',' Active');
+
+/*PART-C ::--  Basic SELECT Queries */
+-- TASK(12 TO 30)
+select * from employees; 
+select employee_name from employees;
+select employee_name, salary from employees;
+select employee_name, department,city from employees;
+select * from employees where city = "Pune";
+select * from employees where city = "Mumbai";
+select * from employees where department = "Development";
+select * from employees where department = "Testing";
+select * from employees where status = "Active";
+select * from employees where status = "Inactive";
+select * from employees where employee_id = 103;
+select * from employees where employee_name = "Priya Sharma";
+select * from employees where salary > 40000;
+select * from employees where salary < 40000;
+select * from employees where salary  = 35000;
+select * from employees where salary  >= 42000;
+select * from employees where city = "Pune" and status ="Active" ;
+select * from employees where department = "Development" and salary > 45000 ;
+select * from employees where city = "Pune" or city = "Mumbai" ;
+
+
+/*PART- D 	UPDATE Operations*/
+-- TASK(31 TO 38)
+
+update employees set salary =48000 where employee_name="Rahul Patil";
+-- 	UPDATE employees SET salary = 48000 WHERE employee_id = 101;
+-- select * from employees;
+
+update employees 
+set status = "Active"
+where employee_name ="Rohan Deshmukh";
+
+update employees
+set city = "Pune"
+where employee_name = "Sneha Kulkarni";
+select * from employees;
+
+update employees
+set department ="Development"
+where employee_name = "Priya Sharma";
+
+update employees
+set employee_id = 106 
+where salary = 45000;
+
+update employees 
+set salary = salary + 3000
+where employee_id = 103 ;
+
+update employees
+set salary = salary+2000
+where department = "Testing";
+
+update employees 
+set city = 'Mumbai Branch'  
+where city = 'Mumbai';
+
+
+/*part - E ::-- DELETE Operations*/
+-- TASK(39 TO 43)
+delete from employees where employee_id = 105;
+delete from employees where employee_name = " Rohan Deshmukh";
+delete from employees where status = "Inactive";
+delete from employees where salary< 30000;
+delete from employees where employee_id = 104;
+
+/*PART F ::-- ALTER TABLE / DDL Practice */
+-- TASK(44 TO 50)
+	
+alter table employees add email varchar(100);
+alter table employees add mobile varchar(15);
+alter table employees modify city varchar(100);
+alter table employees rename column employee_name to name;
+alter table employees drop column mobile;
+alter table employees add experience int;
+UPDATE employees SET experience = 3 WHERE employee_id = 101;
+select * from employees;
+
+
+/*PART G ::--  Table-Level DDL Practice */
+-- TASK (51 TO 60)
+
+create table departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100),
+    location VARCHAR(100)
+); 
+INSERT INTO departments (department_id, department_name, location) VALUES
+(1, 'Development', 'Building A'),
+(2, 'Testing', 'Building B'),
+(3, 'HR', 'Building C');
+SELECT * FROM departments;
+
+update departments set location = "Building E" where department_id = 2;
+
+delete from departments where department_id = 103;
+rename table departments to company_departments;
+desc company_departments;
+truncate table company_departments;
+drop table company_departments;
+show tables;
+select * from company_departments;
+select * from departments;
