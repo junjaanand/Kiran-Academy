@@ -17,7 +17,7 @@ select * from employees;
 
 
 /*PART-B ::--  INSERT Operations*/
--- TASK((6 TO 11)
+-- TASK(6 TO 11)
 insert into employees (employee_id, employee_name, department, salary, city, joining_date, status)
 values  (101, "Rahul_Patil", "Development", 45000, "Pune", "2026-01-10", "Active"),
 (102, 'Priya Sharma', 'Testing', 38000, 'Mumbai', '2026-02-15', 'Active'),
